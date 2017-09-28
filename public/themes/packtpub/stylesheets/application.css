@@ -1,0 +1,5 @@
+@import url(../../../themes/alternate/stylesheets/application.css);
+
+#top-menu { background-color: #040404; }
+#header { background-color: #8db1c9; }
+#main-menu li a { background-color: #404040; }
