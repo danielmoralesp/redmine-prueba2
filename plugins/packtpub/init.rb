@@ -1,5 +1,7 @@
 require 'redmine'
 
+require_dependency 'packtpub_hook'
+
 Rails.logger.info 'Starting Packt Publishing Plugin for Redmine'
 
 Redmine::Plugin.register :packtpub do

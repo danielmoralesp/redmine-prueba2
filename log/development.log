@@ -11901,3 +11901,127 @@ Processing by WelcomeController#index as HTML
   [1m[35mUserPreference Load (0.5ms)[0m  SELECT  `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 1 LIMIT 1
   [1m[36mProject Load (0.5ms)[0m  [1mSELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 1 AND (`projects`.`status` != 9) AND `projects`.`status` = 1[0m
 Completed 200 OK in 49ms (Views: 39.6ms | ActiveRecord: 3.6ms)
+Starting Packt Publishing Plugin for Redmine
+
+
+Started GET "/" for ::1 at 2017-09-28 19:22:48 -0500
+Processing by WelcomeController#index as HTML
+  [1m[36mSetting Load (0.7ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'session_lifetime'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'session_timeout'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSQL (11.6ms)[0m  [1mUPDATE `tokens` SET `tokens`.`updated_on` = '2017-09-28 19:22:49' WHERE `tokens`.`user_id` = 1 AND `tokens`.`value` = '45b249548d900dda8866f31a6147849a700503bb' AND `tokens`.`action` = 'session'[0m
+  [1m[35m (0.5ms)[0m  SELECT MAX(`settings`.`updated_on`) FROM `settings`
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 1 LIMIT 1[0m
+  Current user: admin (id=1)
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_loggedin'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mNews Load (0.6ms)[0m  [1mSELECT  `news`.* FROM `news` INNER JOIN `projects` ON `projects`.`id` = `news`.`project_id` WHERE (projects.status <> 9 AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='news'))  ORDER BY news.created_on DESC LIMIT 5[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'welcome_text'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mToken Load (0.5ms)[0m  [1mSELECT  `tokens`.* FROM `tokens` WHERE `tokens`.`user_id` = 1 AND (action='feeds') LIMIT 1[0m
+  [1m[35mSetting Load (0.4ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'app_title'  ORDER BY `settings`.`id` DESC LIMIT 1
+  Rendered welcome/index.html.erb within layouts/base (101.1ms)
+  [1m[36mSetting Load (0.6ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mUserPreference Load (0.6ms)[0m  SELECT  `user_preferences`.* FROM `user_preferences` WHERE `user_preferences`.`user_id` = 1 LIMIT 1
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'gravatar_enabled'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mProject Load (0.6ms)[0m  SELECT `projects`.`id`, `projects`.`name`, `projects`.`identifier`, `projects`.`lft`, `projects`.`rgt` FROM `projects` INNER JOIN `members` ON `projects`.`id` = `members`.`project_id` WHERE `members`.`user_id` = 1 AND (`projects`.`status` != 9) AND `projects`.`status` = 1
+Completed 200 OK in 747ms (Views: 404.8ms | ActiveRecord: 29.7ms)
+
+
+Started POST "/logout" for ::1 at 2017-09-28 19:22:52 -0500
+Processing by AccountController#logout as HTML
+  Parameters: {"authenticity_token"=>"KwobyuxXqgSu0fu9EOTGa0+ZI/TixaLwY1DHKoOFb/55NvCJgTvhvvk73qj+nGKhipNPkcLxmnQWXl0CmINz+w=="}
+  [1m[36mSQL (1.1ms)[0m  [1mUPDATE `tokens` SET `tokens`.`updated_on` = '2017-09-28 19:22:52' WHERE `tokens`.`user_id` = 1 AND `tokens`.`value` = '45b249548d900dda8866f31a6147849a700503bb' AND `tokens`.`action` = 'session'[0m
+  [1m[35m (0.3ms)[0m  SELECT MAX(`settings`.`updated_on`) FROM `settings`
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('User', 'AnonymousUser') AND `users`.`status` = 1 AND `users`.`id` = 1 LIMIT 1[0m
+  Current user: admin (id=1)
+  [1m[35mSQL (0.8ms)[0m  DELETE FROM `tokens` WHERE `tokens`.`user_id` = 1 AND `tokens`.`action` = 'session' AND `tokens`.`value` = '45b249548d900dda8866f31a6147849a700503bb'
+  [1m[36mAnonymousUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1[0m
+Redirected to http://localhost:3000/
+Completed 302 Found in 21ms (ActiveRecord: 2.9ms)
+
+
+Started GET "/" for ::1 at 2017-09-28 19:22:52 -0500
+Processing by WelcomeController#index as HTML
+  [1m[35m (0.4ms)[0m  SELECT MAX(`settings`.`updated_on`) FROM `settings`
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'rest_api_enabled'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mAnonymousUser Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1
+  Current user: anonymous
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'login_required'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.3ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mRole Load (0.3ms)[0m  [1mSELECT  `roles`.* FROM `roles` WHERE `roles`.`builtin` = 2  ORDER BY `roles`.`id` ASC LIMIT 1[0m
+  [1m[35mGroupAnonymous Load (0.5ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('GroupAnonymous')  ORDER BY id LIMIT 1
+  [1m[36m (0.4ms)[0m  [1mSELECT `users`.`id` FROM `users` WHERE `users`.`type` IN ('GroupAnonymous')[0m
+  [1m[35m (0.4ms)[0m  SELECT `members`.`user_id`, role_id, `members`.`project_id` FROM `members` INNER JOIN `projects` ON `projects`.`id` = `members`.`project_id` INNER JOIN `member_roles` ON `member_roles`.`member_id` = `members`.`id` WHERE (projects.status <> 9) AND (members.user_id = 4 OR (projects.is_public = 1 AND members.user_id = 2))
+  [1m[36mNews Load (0.6ms)[0m  [1mSELECT  `news`.* FROM `news` INNER JOIN `projects` ON `projects`.`id` = `news`.`project_id` WHERE (((projects.status <> 9 AND EXISTS (SELECT 1 AS one FROM enabled_modules em WHERE em.project_id = projects.id AND em.name='news')) AND ((projects.is_public = 1 AND projects.id NOT IN (SELECT project_id FROM members WHERE user_id IN (4,2))))))  ORDER BY news.created_on DESC LIMIT 5[0m
+  Rendered welcome/index.html.erb within layouts/base (1.0ms)
+  [1m[35mSetting Load (0.4ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_hide_mail'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_time_zone'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.4ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'self_registration'  ORDER BY `settings`.`id` DESC LIMIT 1
+Completed 200 OK in 134ms (Views: 18.3ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/login" for ::1 at 2017-09-28 19:22:54 -0500
+Processing by AccountController#login as HTML
+  [1m[36m (0.4ms)[0m  [1mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  [1m[35mAnonymousUser Load (0.6ms)[0m  SELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1
+  Current user: anonymous
+  Rendered plugins/packtpub/app/views/packtpub/_login.html.erb (0.4ms)
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'lost_password'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.4ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'openid'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'autologin'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  Rendered account/login.html.erb within layouts/base (25.1ms)
+Completed 200 OK in 81ms (Views: 74.1ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/login" for ::1 at 2017-09-28 19:22:56 -0500
+Processing by AccountController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QuDsJTwsGL7lFUHRBLpf2nwdIE3gwqMa9HbBwdcgTG8z8Z5mzc4xqlrbrO8PXTTYnI9Yz4TKJC5lWTfzVji5xw==", "back_url"=>"http://localhost:3000/", "username"=>"", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[35m (0.5ms)[0m  SELECT MAX(`settings`.`updated_on`) FROM `settings`
+  [1m[36mAnonymousUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Current user: anonymous
+Failed login for '' from ::1 at 2017-09-29 00:22:56 UTC
+  Rendered plugins/packtpub/app/views/packtpub/_login.html.erb (0.1ms)
+  Rendered account/login.html.erb within layouts/base (3.4ms)
+Completed 200 OK in 22ms (Views: 16.8ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/login" for ::1 at 2017-09-28 19:23:03 -0500
+Processing by AccountController#login as HTML
+  Parameters: {"utf8"=>"✓", "authenticity_token"=>"QuDsJTwsGL7lFUHRBLpf2nwdIE3gwqMa9HbBwdcgTG8z8Z5mzc4xqlrbrO8PXTTYnI9Yz4TKJC5lWTfzVji5xw==", "back_url"=>"http://localhost:3000/", "username"=>"", "password"=>"[FILTERED]", "login"=>"Login"}
+  [1m[35m (0.4ms)[0m  SELECT MAX(`settings`.`updated_on`) FROM `settings`
+  [1m[36mAnonymousUser Load (0.7ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Current user: anonymous
+Failed login for '' from ::1 at 2017-09-29 00:23:03 UTC
+  Rendered plugins/packtpub/app/views/packtpub/_login.html.erb (0.0ms)
+  Rendered account/login.html.erb within layouts/base (2.0ms)
+Completed 200 OK in 16ms (Views: 11.9ms | ActiveRecord: 1.1ms)
+Starting Packt Publishing Plugin for Redmine
+
+
+Started GET "/login" for ::1 at 2017-09-28 19:24:20 -0500
+Processing by AccountController#login as HTML
+  [1m[36m (0.3ms)[0m  [1mSELECT MAX(`settings`.`updated_on`) FROM `settings`[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'rest_api_enabled'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mAnonymousUser Load (0.5ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Current user: anonymous
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'force_default_language_for_anonymous'  ORDER BY `settings`.`id` DESC LIMIT 1
+  Rendered plugins/packtpub/app/views/packtpub/_login.html.erb (0.4ms)
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'lost_password'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.4ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'openid'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'autologin'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  Rendered account/login.html.erb within layouts/base (55.7ms)
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'app_title'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSetting Load (0.4ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'ui_theme'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.5ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_hide_mail'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSetting Load (0.3ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'default_users_time_zone'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+  [1m[35mSetting Load (0.4ms)[0m  SELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'login_required'  ORDER BY `settings`.`id` DESC LIMIT 1
+  [1m[36mSetting Load (0.5ms)[0m  [1mSELECT  `settings`.* FROM `settings` WHERE `settings`.`name` = 'self_registration'  ORDER BY `settings`.`id` DESC LIMIT 1[0m
+Completed 200 OK in 607ms (Views: 378.7ms | ActiveRecord: 9.1ms)
+
+
+Started GET "/login" for ::1 at 2017-09-28 19:24:25 -0500
+Processing by AccountController#login as HTML
+  [1m[35m (0.4ms)[0m  SELECT MAX(`settings`.`updated_on`) FROM `settings`
+  [1m[36mAnonymousUser Load (0.4ms)[0m  [1mSELECT  `users`.* FROM `users` WHERE `users`.`type` IN ('AnonymousUser')  ORDER BY `users`.`id` ASC LIMIT 1[0m
+  Current user: anonymous
+  Rendered plugins/packtpub/app/views/packtpub/_login.html.erb (0.1ms)
+  Rendered account/login.html.erb within layouts/base (2.9ms)
+Completed 200 OK in 17ms (Views: 13.6ms | ActiveRecord: 0.8ms)
